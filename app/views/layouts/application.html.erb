@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Olx</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if member_signed_in? %>
+<div class="row-fluid">
+  <div class="span8"></div>
+  <div class="span2"></div>
+   <div class="span2">
+        <%= link_to "Sign Out", destroy_member_session_path, :method => :delete %>
+    </div>
+</div>
+<% end %>
+<div class="row-fluid">
+  <% if member_signed_in? %>
+  <div class="span4">
+    <%= link_to "View Ads", products_path( :type => "1") %><br/>
+    <%= link_to "View My Ads", products_path( :type => "2") %><br/>
+    <%= link_to "Post an Ad", new_product_path %><br/>
+    <%= link_to "View My Purchases", "#{destroy_member_session_path}", :method => :delete %><br/>
+  </div>
+  <% end %>
+  <div class="span8"><%= yield %></div>
+</div>
+
+
+
+</body>
+</html>
