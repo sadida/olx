@@ -5,6 +5,7 @@ class AdsController < ApplicationController
   # GET /ads.json
   def index
     @ads = Ad.all
+    #simple test change
   end
 
   # GET /ads/1
